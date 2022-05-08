@@ -8,12 +8,13 @@ for line in lines:
     input.append(int(line))
 
 
+#Day 1 - Problem 1
+
 x=0
 input_length = len(input)
 sum_count = 0
 
 
-#First Problem
 for num in range(0,input_length-1):
     if input[x] < input[x+1]:
         sum_count +=1
@@ -25,7 +26,8 @@ x=0
 input_length = len(input)
 sum_count = 0
 
-#Second Problem
+#Day 1 - Problem 2
+
 for num in range(0,input_length-3):
     first_sum = input[x] + input[x+1] + input[x+2]
     second_sum = input[x+1] + input[x+2] + input[x+3]

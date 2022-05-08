@@ -1,36 +1,41 @@
-lines = []
+##Input
 with open('input.txt') as f:
-    lines = f.readlines()
+    input = []
+    input = [x.rstrip() for x in f]
 
-input =[]
 
-for line in lines:
-    input.append(int(line))
+##Part 1
+horizontal = 0
+vertical = 0
 
-x=0
-input_length = len(input)
-sum_count = 0
+for line in input:
+    if line[0] == 'f':
+        horizontal += int(line[-1])
 
-#First Problem
-for num in range(0,input_length-1):
-    if input[x] < input[x+1]:
-        sum_count +=1
-    x+=1
+    if line[0] == 'u':
+        vertical -= int(line[-1])
 
-print("First Answer:" + str(sum_count))
+    if line[0] == 'd':
+        vertical += int(line[-1])
 
-x=0
-input_length = len(input)
-sum_count = 0
+print("The Answer is:x")
+print(horizontal * vertical)
 
-#Second Problem
-for num in range(0,input_length-3):
-    first_sum = input[x] + input[x+1] + input[x+2]
-    second_sum = input[x+1] + input[x+2] + input[x+3]
-    if first_sum < second_sum:
-        sum_count +=1
-    x+=1
+##Part 2
+horizontal = 0
+vertical = 0
+aim= 0
 
-print("Second Answer:" + str(sum_count))
-fff
+for line in input:
+    if line[0] == 'f':
+        horizontal += int(line[-1])
+        vertical += (int(line[-1])) * aim
 
+    if line[0] == 'u':
+        aim -= int(line[-1])
+
+    if line[0] == 'd':
+        aim += int(line[-1])
+
+print("The Answer is:x")
+print(horizontal * vertical)
