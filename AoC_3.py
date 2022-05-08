@@ -50,7 +50,7 @@ for x in range(string_length):
         if int(line[x]) == 1:
             one += 1
 
-    if one>=zero:
+    if one >= zero:
         oxygen_generator_check +='1'
     else:
         oxygen_generator_check +='0'
@@ -64,10 +64,8 @@ for x in range(string_length):
             if int(line[x]) != 0:
                 oxygen_generator_list = list(filter(lambda val: val != line, oxygen_generator_list))
 
-print(oxygen_generator_check)
-print(oxygen_generator_list)
 
-##
+############
 
 co2_scrubber_input = input
 string_length = len(input[0])
@@ -84,20 +82,25 @@ for x in range(string_length):
         if int(line[x]) == 1:
             one += 1
 
-    if one >= zero:
+    if zero <= one:
         co2_scrubber_rating +='0'
     else:
         co2_scrubber_rating +='1'
 
     for line in co2_scrubber_input:
-        if (one >= zero):
-            if int(line[x]) != 1:
-                co2_scrubber_input = list(filter(lambda val: val != line, co2_scrubber_input))
-        else:
+        if zero <= one:
             if int(line[x]) != 0:
                 co2_scrubber_input = list(filter(lambda val: val != line, co2_scrubber_input))
+        else:
+            if int(line[x]) != 1:
+                co2_scrubber_input = list(filter(lambda val: val != line, co2_scrubber_input))
 
+    if len(co2_scrubber_input) == 1:
+        break
 
-print(co2_scrubber_rating)
 print(co2_scrubber_input)
-
+print("The Second Answer is")
+oxygen_integer = int(oxygen_generator_list[0],2)
+co2_integer = int(co2_scrubber_input[0],2)
+life_support_rating = oxygen_integer * co2_integer
+print(life_support_rating)
