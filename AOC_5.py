@@ -13,8 +13,7 @@ line_list = []
 
 for line in input_list:
     x = line.split(",")
-    if (int(x[0]) == int(x[2])) or (int(x[1]) == int(x[3])):
-        line_list.append(x)
+    line_list.append(x)
 
 board_dict = {
 
@@ -26,6 +25,7 @@ for line in line_list:
 
 point_list = []
 
+##Vertical Lines
 for line in line_list:
 
     if line[0] == line[2]:
@@ -38,9 +38,10 @@ for line in line_list:
             point = str(line[0])+","+str(bottom_point+i)
             point_list.append(point)
 
-for line in line_list:
 
-    if line[1] == line[3]:
+##Horizontal Lines
+
+    elif line[1] == line[3]:
 
         right_point = int(max(line[0],line[2]))
         left_point = int(min(line[0],line[2]))
@@ -50,9 +51,37 @@ for line in line_list:
             point = str(left_point+i)+","+str(line[3])
             point_list.append(point)
 
-counter = Counter(point_list)
+##Diagonal Line
+    else:
+        print(line)
+        x1 = line[0]
+        y1 = line[1]
+        x2 = line[2]
+        y2 = line[3]
+        loop_count = abs(x2 - x1) + 1
 
-print (counter['64,615'])
+        for i in range(0,loop_count):
+            if x1 < x2:
+                if y1 < y2:
+                    point = str(x1 + i) + "," + str(y1 + i)
+                    point_list.append(point)
+                    print(point)
+                else:
+                    point = str(x1 + i) + "," + str(y1 - i)
+                    point_list.append(point)
+                    print(point)
+            else:
+                if y1 < y2:
+                    point = str(x1 - i) + "," + str(y1 + i)
+                    point_list.append(point)
+                    print(point)
+                else:
+                    point = str(x1 - i) + "," + str(y1 - i)
+                    point_list.append(point)
+                    print(point)
+
+
+counter = Counter(point_list)
 
 point_count = 0
 for value in counter.values():
