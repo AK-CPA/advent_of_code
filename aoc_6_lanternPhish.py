@@ -1,3 +1,5 @@
+import math
+
 input_file = open('input.txt')
 file_contents = input_file.read()
 input = file_contents.split(",")
@@ -8,7 +10,10 @@ fish_list = []
 for i in range(0,number_of_starting_fish):
     fish_list.append(int(input[i]))
 
-for i in range(1,257):
+original_number_of_fish = len(fish_list)
+print(len(fish_list))
+
+for i in range(1,81):
     number_of_fish = len(fish_list)
     print(i)
 
@@ -22,5 +27,20 @@ for i in range(1,257):
         fish_list[x] = fish_list[x] - 1
 
     print("Day:",i, "Number of Fish",len(fish_list))
+
+growth_rate = len(fish_list) / original_number_of_fish
+print(growth_rate)
+
+x = math.log(growth_rate)
+print(x)
+x = x/80
+print(x)
+
+final_answer_1 = 300*(math.e)**(x*80)
+print(final_answer_1)
+
+final_answer_2 = 300*(math.e)**(x*256)
+print(final_answer_2)
+
 
 
